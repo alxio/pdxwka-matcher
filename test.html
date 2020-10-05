@@ -1,0 +1,89 @@
+<script src="matching.js"></script>
+<style>
+    button,
+    div {
+        position: absolute;
+        width: 400px;
+    }
+
+    textarea {
+        width: 380px;
+        height: 600px;
+    }
+
+    button {
+        width: 150px;
+        height: 50px;
+        left: 425px;
+    }
+
+    #solution {
+        left: 600px;
+    }
+</style>
+<!-- TODO: add alternative YAML input -->
+<div id="input">
+Randomize: <input type="checkbox" id="randomize">
+<br>
+<textarea id="inputArea">
+garpeq
+tsang
+gaeldom
+opole
+osman
+sirhind
+
+neko
+tsang
+
+kotlet
+landshut
+uesugi
+filler
+
+azeth
+osman
+songhai
+rassids
+bulgaria
+uesugi
+
+lodyga
+sirhind
+mysore
+filler
+
+luis
+verona
+saluzo
+sirhind
+mysore
+uesugi
+
+trexons
+gascony
+wessex
+uesugi
+mameluk
+sirhind
+
+ckielce
+tafilalt
+mameluk
+filler
+
+exter
+mameluk
+filler
+
+beriand
+sirhind
+bulgaria
+khorasan
+wessex
+finlandia
+</textarea>
+</div>
+<button onclick="go();">GO</button>
+
+<div id="solution"></div>
