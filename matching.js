@@ -2,6 +2,7 @@ class Vertex {
     constructor() {
         this.e = [];
         this.match = null;
+        this.fixing = false;
     }
 }
 
@@ -84,9 +85,12 @@ function firstMatch() {
     }
 }
 
+let lvl = 0;
+
 function fixMatch() {
     for (let pName in P) {
         if (!P[pName].match) {
+            lvl = 0;
             fix(pName);
         }
     }
@@ -94,11 +98,16 @@ function fixMatch() {
 
 function fix(pName) {
     let p = P[pName];
+    if(p.fixing) return false;
+    p.fixing = true;
+    // console.log("fix: " + pName + " " + p);
+    p.fixing = true;
     for (let cName of p.e) {
         let c = C[cName];
         if (!c.match) {
             p.match = cName;
             c.match = pName;
+            p.fixing = false;
             return true;
         }
     }
@@ -109,10 +118,13 @@ function fix(pName) {
             if (fix(c.match)) {
                 p.match = cName;
                 c.match = pName;
+                p.fixing = false;
                 return true;
             }
         }
     }
+    
+    p.fixing = false;
 }
 
 function go() {
@@ -160,6 +172,32 @@ function go() {
     let ans = solve(players).split("\n").join("<br>\n");
     document.getElementById("solution").innerHTML = ans;
 }
+
+let fail =
+`AA
+1
+2
+
+BB
+1
+2
+3
+
+CC
+1
+2
+3
+4
+
+DD
+1
+2
+3
+4
+5
+
+EE
+1`;
 
 let example =
     `
